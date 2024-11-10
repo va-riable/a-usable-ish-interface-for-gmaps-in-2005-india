@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Map Interface - Usablish </title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+
+
+
+<body style ="background-color: rgb(22, 27, 51);">
+
+    <div id = "message1">
+        <h1>Please Note!!</h1>
+       <p> Many functions do not work (and not intentionally so), as this is still a work in progress.
+        Some of these bugs include</p>
+        <ul>
+            <li>The ability to pan the image outside the screen
+                <p> Technically speaking, the map works with tiles, and this protoype has only 1 tile.
+                    Ideally, this is not a percived problem with the interface as the map would be continous and 
+                    not a single image. 
+                </p></li>
+            <li><p>The search button and functions</p></li>
+            <li> Some linking of pages
+                <p>Individual pages and iterations of frames can be seen in the Miro Board linked on the right corner</p>
+            </li>
+        </ul>
+        <h2>Things you can do include:</h2>
+        <p>
+            <ul>
+                <li> Panning!!!!</li>
+                <li> And Zooming</li>
+                <p>
+                    <li> Now, from Point A, how can you get to Point B?
+                    Lets head south-east to find out.
+                    </li>
+                </p>
+            </ul>
+        </p>
+    </div>
+
+    <button id="miro">
+       <a href="https://miro.com/app/board/uXjVLJeKGBA=/?share_link_id=289049944739">
+        <h1>Link to Miro Board</h1></a> 
+    </button>
+
+    <div id="task"><a href ="task.html"><h1>Task</h1></a></div>
+
+    <div id = "footnote"><center>
+        <h3>Performance of Understanding 
+            <p>Semester III</p>  
+        </h3>
+        <h4>Task 1 Submission</h4>
+        <p> HCD, Year II, Vasantha Muthiah</p>
+        <p> ID: 235306002</p></center>
+    </div>
+
+    <div class = "container">
+        <div class = "content">
+
+            <div id="help"><a href ="help.html">Help</a></div>
+
+
+            <button id = "login" onclick="proceed('Log In?');buffer()">Log In</button>
+            <button id = "recenter" onclick="resetMap()">Re-Center</button>
+            <div id = "coinslot"></div>
+            
+            <button class="arrow-up" onclick="pan('up')" onkeyup="pan('up')">⇧</button>
+            <button class="arrow-down" onclick="pan('down')">⇩</button>
+            <button class="arrow-left"onclick="pan('to the left')">⇦</button>
+            <button class="arrow-right" onclick="pan('to the right')">⇨</button>
+
+
+            <button class = "leftbuts" style = "top: 10vh" onclick="proceed('enter From Location?');showSearchInput('From Location')">From Location</button>
+            <button class = "leftbuts" style = "top: 22vh" onclick="proceed('enter Destination?'); showSearchInput('Destination Location')">To Location</button>
+            <button class = "leftbuts" style = "top: 34vh" onclick="proceed('get directions for specified route?'); buffer()">Get Directions</button>
+            <button class = "leftbuts" style = "top: 53vh" onclick="proceed('to print out current map on screen?');buffer()">Print</button>
+
+            <button class = "zoombuts" style = "left: 7%" onclick="zoomIn()">Zoom In +</button>
+            <button class = "zoombuts" style = "left: 19%" onclick="zoomOut()">Zoom Out -</button>
+
+            <button class = "terrainbutscol1" style = "top: 84vh" onclick="proceed('go to standard map view?');buffer()">Map</button>
+            <button class = "terrainbutscol1" style = "top: 91vh" onclick="proceed('go to standard sattelite view?');buffer()">Sattelite</button>
+
+            <button class = "terrainbutscol2" style = "top: 84vh" onclick="proceed('go to standard terrain view?');buffer()">Terrain</button>
+            <button class = "terrainbutscol2" style = "top: 91vh" onclick="proceed('go to standard traffic view?');buffer()">Traffic</button>
+
+            <button class = "circlebuts" style = "left:35%" onclick=" pin()">Drop A Pin</button>
+            <button class = "circlebuts" style = "left:44%" onclick="measure()">Measure Distance</button>
+
+            <div id = "potwlbl"><center>Places on The Way</center></div>
+
+            <button class = "optionbutscol1" style = "top: 74vh" onclick="placesWay('Resteraunts'); buffer()">1</button>
+            <button class = "optionbutscol1" style = "top: 82vh" onclick="placesWay('Shopping Areas'); buffer()">3</button>
+            <button class = "optionbutscol1" style = "top: 90vh" onclick="placesWay('MedicalStores'); buffer()">5</button>
+            
+
+            <button class = "optionbutscol2" style = "top: 74vh" onclick="placesWay('Petrol Pumps'); buffer()">2</button>
+            <button class = "optionbutscol2" style = "top: 82vh" onclick="placesWay('Parks'); buffer()">4</button>
+            <button class = "optionbutscol2" style = "top: 90vh" onclick="proceed('search for other places?'); showSearchInput('Places on The Way')">Search</button>
+            
+
+            <div id = "pnblbl"><center>Places Nearby</center></div>
+
+            <button class = "optionbutscol3" style = "top: 74vh" onclick="placesNearby('Resteraunts'); buffer()">1</button>
+            <button class = "optionbutscol3" style = "top: 82vh" onclick="placesNearby('Shopping Areas'); buffer()">3</button>
+            <button class = "optionbutscol3" style = "top: 90vh" onclick="placesNearby('MedicalStores'); buffer()">5</button>
+           
+
+            <button class = "optionbutscol4" style = "top: 74vh" onclick="placesNearby('Petrol Pumps'); buffer()">2</button>
+            <button class = "optionbutscol4" style = "top: 82vh" onclick="placesNearby('Parks'); buffer()">4</button>
+            <button class = "optionbutscol4" style = "top: 90vh"onclick="proceed('search for other places?'); showSearchInput('Places Nearby')">Search</button>
+          
+
+            <div id = "google">
+                <center><img src="googlelogo2005bg.png" style = "top:0vh;height:5vh"/></center>
+            </div>
+            <div id = "mapscreen">
+                <img id = "map" src ="map.png"/>
+            </div> 
+
+            <div id="buffer"><center><h1>Retrieving Information</h1><p><h2>Function still in the works...</h2></p></center></div>
+
+            <div id = "zoomlight"></div>
+            <div id = "terrainlbl"><center>Map View</center></div>
+            
+
+
+
+            <!--search input: stillin progress-->
+            <div class="search-container" id="search-container">
+                <input type="text" id="search-input" placeholder="Enter text and press Enter">
+                <button id="enter-btn">Enter</button>
+              </div>
+
+              
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+</html>
